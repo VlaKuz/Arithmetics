@@ -1,7 +1,7 @@
 #include "../List/List/arithmetic.h"
 #include "tlist.h"
 
-int Priority(char s)
+int Priority(char s) //done приоритет
 {
 	int prior;
 	switch (s)
@@ -22,7 +22,7 @@ int Priority(char s)
 return prior;
 }/*---------------------------------------------------------------------*/
 
-bool Operation(char s)
+bool Operation(char s) //done определение операций
 {
 	bool f=false;
 	char signum[]="-+*/";
@@ -35,7 +35,7 @@ bool Operation(char s)
 	return f;
 }/*---------------------------------------------------------------------*/
 
-int TypeChar(char s)
+int TypeChar(char s) //done разбиение на лекс.
 {
 	if ( Operation(s) )
 		return 1;
@@ -51,8 +51,8 @@ int TypeChar(char s)
 		return 0;
 
 }/*---------------------------------------------------------------------*/
-
-bool Brackets(char *s)
+ 
+bool Brackets(char *s) //done контроль скобок
 {
 	Stack<char> Stack_1;
 	int i=0;
@@ -80,7 +80,7 @@ bool Brackets(char *s)
 	}
 }/*---------------------------------------------------------------------*/
 
-void UnarMinus(char *s, char *res)
+void UnarMinus(char *s, char *res) //done запись унарного минуса
 {
 	int len = strlen(s);
 	int j=0;
@@ -112,7 +112,7 @@ void UnarMinus(char *s, char *res)
 	res[j]='\0';
 }/*---------------------------------------------------------------------*/
 
-void ConvertInPostfix(const char* s,char *res)
+void ConvertInPostfix(const char* s,char *res) //done обр. польская запись
 {
 	Stack<char> Stack_2(256);
 	int len = strlen(s);
@@ -187,7 +187,7 @@ void ConvertInPostfix(const char* s,char *res)
 	res[j]='\0';
 }/*---------------------------------------------------------------------*/
 
-void PointToComma(char *s)
+void PointToComma(char *s) //done перев. точки в запятую
 {
 	int len = strlen(s);
 	for (int i=0;i<len;i++)
@@ -200,7 +200,7 @@ void PointToComma(char *s)
 	}
 }/*---------------------------------------------------------------------*/
 
-bool FindUnarMinus(char *s)
+bool FindUnarMinus(char *s) //done определение унар. минуса
 {
 	int i=1;
 	int f=0;
@@ -225,7 +225,7 @@ bool FindUnarMinus(char *s)
 		return false;
 }/*---------------------------------------------------------------------*/
 
-bool CheckOperationsInBegEndWithBrack(char* s)
+bool CheckOperationsInBegEndWithBrack(char* s) //done проверка кор. операций в начале конце выражения и после откр. и перед закрыв. скобками
 {
 	int len=strlen(s);
 	for (int i=1;i<len-1;i++)
@@ -250,7 +250,7 @@ bool CheckOperationsInBegEndWithBrack(char* s)
 	return true;
 }/*---------------------------------------------------------------------*/
 
-bool CheckOperationsInSuccession(char *s)
+bool CheckOperationsInSuccession(char *s) //done проверка кор. операций на запись их подряд
 {
 	int len=strlen(s);
 	for (int i=0;i<len-1;i++)
@@ -267,7 +267,7 @@ bool CheckOperationsInSuccession(char *s)
 		return true;
 }/*---------------------------------------------------------------------*/
 
-bool CheckCorrectSymbols(char *s)
+bool CheckCorrectSymbols(char *s) //done проверка кор. записи символов
 {
 	int len = strlen(s);
 	for (int i=0;i<len;i++)
@@ -279,7 +279,7 @@ bool CheckCorrectSymbols(char *s)
 		return true;
 }/*---------------------------------------------------------------------*/
 
-bool CheckPositionOfDotAndComma(char *s)
+bool CheckPositionOfDotAndComma(char *s) //done кор. расстановки точек и запятых
 {
 
 	int len = strlen(s);
@@ -297,7 +297,7 @@ bool CheckPositionOfDotAndComma(char *s)
 	}	
 }/*---------------------------------------------------------------------*/
 
-bool CheckVariable(char *s)
+bool CheckVariable(char *s) //done кор. наличия переменных
 {
 	int len = strlen(s);
 	for (int i=0;i<len;i++)
@@ -307,7 +307,7 @@ bool CheckVariable(char *s)
 	}
 		return false;
 }/*---------------------------------------------------------------------*/
-bool CheckManyVariablesInSuccession(char *s)
+bool CheckManyVariablesInSuccession(char *s) //done кор. записи нескольких переменных подряд
 {
 	int len = strlen(s);
 	for (int i=0;i<len-1;i++)
@@ -318,7 +318,7 @@ bool CheckManyVariablesInSuccession(char *s)
 		}
 		return true;
 }/*---------------------------------------------------------------------*/
-bool CheckStrAtallChecks(char* s)
+bool CheckStrAtallChecks(char* s) //done все проверки корректности вместе взятые 
 {
 	if((Brackets(s))&&(CheckOperationsInBegEndWithBrack(s))&&(CheckOperationsInSuccession(s))&&(CheckCorrectSymbols(s))&&(CheckPositionOfDotAndComma(s))&&(CheckManyVariablesInSuccession(s)))
 		return true;
@@ -326,7 +326,7 @@ bool CheckStrAtallChecks(char* s)
 		return false;
 }/*---------------------------------------------------------------------*/
 
-void FindWritePositVariable (const char *s, int * res)
+void FindWritePositVariable (const char *s, int * res) //done поиск переменных в выражении
 {
 	int j=0;
 	for (int i=0;i<strlen(s);i++)
@@ -337,7 +337,7 @@ void FindWritePositVariable (const char *s, int * res)
 		}
 }/*---------------------------------------------------------------------*/
 
-bool CorrectOfNumb(char *s)
+bool CorrectOfNumb(char *s) //done кор. ввода числа
 {
 	int len = strlen(s);
 	if (CheckPositionOfDotAndComma(s)!=true)
@@ -354,13 +354,13 @@ bool CorrectOfNumb(char *s)
 	return true;
 }/*---------------------------------------------------------------------*/
 
-double Numb(char *s)
+double Numb(char *s) //done перевод строки в число (atof)
 {
 	double result=atof(s);
 	return result;
 }/*---------------------------------------------------------------------*/
 
-void InputValuable(char *s, char *res) 
+void InputValuable(char *s, char *res) //done входные параметры переменных
 {
 	int *numb;
 	int Size_numb=256;
@@ -433,7 +433,7 @@ void InputValuable(char *s, char *res)
 	delete []numb;
 }/*---------------------------------------------------------------------*/
 
-double ResultsCount(char *s)
+double ResultsCount(char *s) //done подсчет выражения
 {
 	Stack<double> Stack_1(256);
 	int len=strlen(s);

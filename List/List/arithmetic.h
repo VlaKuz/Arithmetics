@@ -27,7 +27,7 @@ void FindWritePositVariable (const char *, int * ); //done поиск переменных в вы
 bool CorrectOfNumb(char *); //done кор. ввода числа
 double Numb(char *); //done перевод строки в число (atof)
 void InputValuable(char *,char *); //done входные параметры переменных
-double ResultsCount(char *); //
+double ResultsCount(char *); //done подсчет выражения
 
 
 #endif 

@@ -435,6 +435,25 @@ TEST(Arithmetic,can_variable_big_number_inp)
 	EXPECT_EQ('+',Test_String_3[7]);
 }
 
+TEST(Arithmetic,can_variable_neg_number_inp)
+{
+	char Test_String[]="a+1.2"; //a=-5
+	char Test_String_2[15];
+	char Test_String_3[15];
+	ConvertInPostfix(Test_String,Test_String_2);
+	InputValuable(Test_String_2,Test_String_3);
+	EXPECT_EQ('0',Test_String_3[0]);
+	EXPECT_EQ(' ',Test_String_3[1]);
+	EXPECT_EQ('5',Test_String_3[2]);
+	EXPECT_EQ(' ',Test_String_3[3]);
+	EXPECT_EQ('-',Test_String_3[4]);
+	EXPECT_EQ('1',Test_String_3[5]);
+	EXPECT_EQ('.',Test_String_3[6]);
+	EXPECT_EQ('2',Test_String_3[7]);
+	EXPECT_EQ(' ',Test_String_3[8]);
+	EXPECT_EQ('+',Test_String_3[9]);	
+}
+
 TEST(Arithmetic,calculate_big_string_with_variable_1)
 {
 	char Test_String[]="6+3*a-4+2*2.5"; //a=5
@@ -457,4 +476,40 @@ TEST(Arithmetic,calculate_big_string_with_variable_2)
 	InputValuable(Test_String_2,Test_String_3);
 	Result=ResultsCount(Test_String_3);
 	EXPECT_EQ(2.2,Result);	
+}
+
+TEST(Arithmetic,calculate_big_string_with_negative)
+{
+	char Test_String[]="1+2*a-12.5/2.5"; //a=-2
+	double Result;
+	char Test_String_2[50];
+	char Test_String_3[50];
+	ConvertInPostfix(Test_String,Test_String_2);
+	InputValuable(Test_String_2,Test_String_3);
+	Result=ResultsCount(Test_String_3);
+	EXPECT_EQ(-8,Result);	
+}
+
+TEST(Arithmetic,calculate_big_string_with_big_negative)
+{
+	char Test_String[]="1+2*a"; //a=-12.5
+	double Result;
+	char Test_String_2[50];
+	char Test_String_3[50];
+	ConvertInPostfix(Test_String,Test_String_2);
+	InputValuable(Test_String_2,Test_String_3);
+	Result=ResultsCount(Test_String_3);
+	EXPECT_EQ(-24,Result);	
+}
+
+TEST(Arithmetic,calculate_with_too_many_brackets)
+{
+	char Test_String[]="1+(((1+2*a)-4*3)-2)"; //a=-2
+	double Result;
+	char Test_String_2[50];
+	char Test_String_3[50];
+	ConvertInPostfix(Test_String,Test_String_2);
+	InputValuable(Test_String_2,Test_String_3);
+	Result=ResultsCount(Test_String_3);
+	EXPECT_EQ(-16,Result);	
 }

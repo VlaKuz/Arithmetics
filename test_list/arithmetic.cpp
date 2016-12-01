@@ -352,7 +352,7 @@ bool CorrectOfNumb(char *s) //done кор. ввода числа
 		return false;
 	for (int i=0;i<len;i++)  //нарушение: ввод постронних эл-тов
 	{
-		if((TypeChar(s[i])==0)||(TypeChar(s[i])==1)||(TypeChar(s[i])==5)||(TypeChar(s[i])==3)) 
+		if((TypeChar(s[i])==0)||(TypeChar(s[i])==5)||(TypeChar(s[i])==3)) 
 		{
 			return false;
 		}	
@@ -378,7 +378,7 @@ void InputValuable(char *s, char *res) //done входные параметры переменных
 		numb[i]=-1;
 	FindWritePositVariable(s,numb);
 	if (numb[0]!=-1) //проверяем, есть ли вообще параметры в нашей задаче
-		cout << " В выражении присутствуют параметры " <<endl;
+		cout << " В выражении присутствуют параметры / This string has variables " <<endl;
 	for (int t=0;t<len;t++)
 	{
 		if (numb[j]!=t) //позиция пар-ра не совпала с текущей, зн. просто число
@@ -397,7 +397,7 @@ void InputValuable(char *s, char *res) //done входные параметры переменных
 				gets_s(str);  //ввод значения параметра
 				if (CorrectOfNumb(str)!=true)  //проверка корректности
 				{
-					cout << " " <<endl;
+					cout << " Некорректный ввод параметра! / Incorrect input! " <<endl;
 				}
 				else
 				{

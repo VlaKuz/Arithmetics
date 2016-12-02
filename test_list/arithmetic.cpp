@@ -114,7 +114,7 @@ void UnarMinus(char *s, char *res) //done запись унарного минуса
 
 void ConvertInPostfix(const char* s,char *res) //done обр. польска€ запись
 {
-	Stack<char> Stack_2(256);
+	Stack<char> Stack_2;
 	int len = strlen(s);
 	int j=0; 
 	int m=0;
@@ -288,6 +288,7 @@ bool CheckPositionOfDotAndComma(char *s) //done кор. расстановки точек и зап€тых
 			cout << " “очка или зап€та€ в начале или конце выражени€ " <<endl;
 			return false;
 		}
+	
 	else 
 	{
 		for (int i=1;i<len-1;i++)
@@ -299,8 +300,9 @@ bool CheckPositionOfDotAndComma(char *s) //done кор. расстановки точек и зап€тых
 					return false;
 				}
 			}
-			return true;
-	}	
+			
+	}
+	return true;	
 }/*---------------------------------------------------------------------*/
 
 bool CheckVariable(char *s) //done кор. наличи€ переменных
@@ -369,7 +371,7 @@ double Numb(char *s) //done перевод строки в число (atof)
 void InputValuable(char *s, char *res) //done входные параметры переменных
 {
 	int *numb;
-	int Size_numb=256;
+	int Size_numb=1024;
 	int j=0; 
 	int k=0; 
 	int len=strlen(s);
@@ -389,12 +391,12 @@ void InputValuable(char *s, char *res) //done входные параметры переменных
 		else //параметр
 		{
 			int f=1;
-			char str[256];
+			char str[1024];
 			int i=0;
 			while (f==1)
 			{
 				cout << s[numb[j]]<< "=";
-				gets_s(str);  //ввод значени€ параметра
+				cin>>str;  //ввод значени€ параметра
 				if (CorrectOfNumb(str)!=true)  //проверка корректности
 				{
 					cout << " Ќекорректный ввод параметра! / Incorrect input! " <<endl;
@@ -441,7 +443,7 @@ void InputValuable(char *s, char *res) //done входные параметры переменных
 
 double ResultsCount(char *s) //done подсчет выражени€
 {
-	Stack<double> Stack_1(256);
+	Stack<double> Stack_1;
 	int len=strlen(s);
 	int p=0; 
 	int t=0;
@@ -451,7 +453,7 @@ double ResultsCount(char *s) //done подсчет выражени€
 	{
 		if(TypeChar(s[j])==2) //если число
 		{ 
-			char str[256];
+			char str[1024];
 			int k=0;
 			double numb;	
 			t=j;

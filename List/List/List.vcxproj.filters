@@ -4,4 +4,7 @@
     <ClInclude Include="..\tlist.h" />
     <ClInclude Include="arithmetic.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\test_list\arithmetic.cpp" />
+  </ItemGroup>
 </Project>

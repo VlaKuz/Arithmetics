@@ -238,16 +238,6 @@ TEST(Stack, can_create_empty_stack)
 	ASSERT_NO_THROW (Stack<int> TestStack);
 }
 
-TEST(Stack, can_create_stack_with_positive_length)
-{
-	ASSERT_NO_THROW (Stack<int> TestStack(5));
-}
-
-TEST(Stack, can_not_create_stack_with_negative_length)
-{
-	ASSERT_ANY_THROW (Stack<int> TestStack(-5));
-}
-
 TEST(Stack, can_push_elem)
 {
 	Stack<int> TestStack;

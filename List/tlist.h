@@ -246,7 +246,6 @@ class Stack {
 	List <ValType> Mem;
 public:
 	Stack();
-	Stack(int);
 	bool EmptyStack();
 	void PushElem(const ValType);
 	ValType DelElem();
@@ -257,12 +256,6 @@ public:
 template <class ValType> 
 Stack <ValType>::Stack()
 {
-}/*---------------------------------------------------------------------*/
-
-template <class ValType>
-Stack<ValType>::Stack(int s)
-{	if (s<0)
-	throw 1;
 }/*---------------------------------------------------------------------*/
 
 template <class ValType> 

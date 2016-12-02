@@ -51,12 +51,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../gtest;../List</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../gtest;../List;../List/List;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Egor\Git\Class_List\List;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../List/Debug;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtest.lib;List.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -78,7 +79,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="arithmetic.cpp" />
     <ClCompile Include="test_arithmetic.cpp" />
     <ClCompile Include="test_list.cpp" />
     <ClCompile Include="test_main.cpp" />
@@ -90,10 +90,6 @@
     <ProjectReference Include="..\List\List\List.vcxproj">
       <Project>{1527ab9a-551c-4861-872a-732204e9cb48}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\List\List\arithmetic.h" />
-    <ClInclude Include="..\List\tlist.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
